@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ホーム</title>
+</head>
+<body>
+  <h1><%= username %> さん、ようこそ</h1>
+
+  <h2>メニュー</h2>
+  <button onclick="location.href='https://あいうえお'">新規ルームを作成</button><br><br>
+  <button onclick="location.href='https://かきくけこ'">ルームに参加</button>
+
+  <h2>参加済みのルーム一覧</h2>
+  <ul>
+    <% rooms.forEach(room => { %>
+      <li>
+        <a href="https://<%= room %>"><%= room %></a>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>
