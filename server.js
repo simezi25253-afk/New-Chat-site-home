@@ -11,6 +11,12 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected (home site)"))
   .catch(err => console.log(err));
 
+// ▼▼▼ これを追加 ▼▼▼
+app.get("/", (req, res) => {
+  res.redirect("/home");
+});
+// ▲▲▲ ここまで ▲▲▲
+
 app.get("/home", async (req, res) => {
   const token = req.query.token;
 
@@ -28,14 +34,12 @@ app.get("/home", async (req, res) => {
   const username = decoded.username;
   const userId = decoded.id;
 
-  // 参加済みルームを取得
   let userRooms = await UserRooms.findOne({ userId });
 
   if (!userRooms) {
-    // 初回アクセスなら空のデータを作る
     userRooms = await UserRooms.create({
       userId,
-      rooms: ["123456789"] // 仮で1つ入れておく
+      rooms: ["123456789"]
     });
   }
 
