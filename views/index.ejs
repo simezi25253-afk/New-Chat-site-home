@@ -1,9 +1,48 @@
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const token = params.get("token");
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Home | New Chat Site</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f5f5f5;
+      padding: 40px;
+      text-align: center;
+    }
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: inline-block;
+      min-width: 300px;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    p {
+      color: #555;
+    }
+  </style>
+</head>
+<body>
 
-  if (token) {
-    // Make-room へ自動リダイレクト
-    window.location.href = `https://new-chat-site-make-room.onrender.com/create?token=${token}`;
-  }
-</script>
+  <div class="box">
+    <h1>New Chat Site</h1>
+    <p>ログイン済みのユーザーは自動的にルーム作成ページへ移動します。</p>
+    <p>少しだけお待ちください…</p>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("token");
+
+    if (token) {
+      // Make-room へ自動リダイレクト
+      window.location.href = `https://new-chat-site-make-room.onrender.com/create?token=${token}`;
+    }
+  </script>
+
+</body>
+</html>
