@@ -34,15 +34,17 @@
     <p>少しだけお待ちください…</p>
   </div>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get("token");
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const token = params.get("token");
 
-    if (token) {
-      // Make-room へ自動リダイレクト
-      window.location.href = `https://new-chat-site-make-room.onrender.com/create?token=${token}`;
-    }
-  </script>
+  if (token) {
+    // トークンをURLエンコードして安全に渡す
+    const encoded = encodeURIComponent(token);
+    window.location.href = `https://new-chat-site-make-room.onrender.com/create?token=${encoded}`;
+  }
+</script>
+
 
 </body>
 </html>
